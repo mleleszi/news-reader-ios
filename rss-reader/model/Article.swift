@@ -15,7 +15,7 @@ struct Article: Decodable, Identifiable {
     let description: String?
     let url: String?
     let urlToImage: String?
-    let publishedAt: String?
+    let publishedAt: Date
     let content: String?
     
     enum CodingKeys: CodingKey {
@@ -32,11 +32,14 @@ struct Article: Decodable, Identifiable {
         description = try values.decodeIfPresent(String.self, forKey: .description)
         url = try values.decodeIfPresent(String.self, forKey: .url)
         urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
-        publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
+        
+        let dateString = try values.decodeIfPresent(String.self, forKey: .publishedAt)
+        publishedAt = ISO8601DateFormatter().date(from: dateString!)!
+        
         content = try values.decodeIfPresent(String.self, forKey: .content)
     }
     
-    init(source: Source, author: String, title: String?, description: String?, url: String?, urlToImage: String?, publishedAt: String?, content: String?) {
+    init(source: Source, author: String, title: String?, description: String?, url: String?, urlToImage: String?, publishedAt: String, content: String?) {
         id = UUID()
         self.source = source
         self.author = author
@@ -44,7 +47,7 @@ struct Article: Decodable, Identifiable {
         self.description = description
         self.url = url
         self.urlToImage = urlToImage
-        self.publishedAt = publishedAt
+        self.publishedAt = ISO8601DateFormatter().date(from: publishedAt)!
         self.content = content
     }
     

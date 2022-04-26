@@ -11,15 +11,21 @@ struct ArticleListView: View {
     let articles: [Article]
     
     var body: some View {
+        // TODO: make it refreshable
         NavigationView {
             List {
                 ForEach(articles) { article in
-                    ArticleListItemView(article: article)
+                    NavigationLink {
+                        ArticleContentView()
+                    } label: {
+                        ArticleListItemView(article: article)
+                    }
                 }
             }
+            .listStyle(PlainListStyle())
+            .navigationTitle("Articles")
         }
-        .listStyle(PlainListStyle())
-        .navigationTitle("Articles")
+         
     }
 }
 

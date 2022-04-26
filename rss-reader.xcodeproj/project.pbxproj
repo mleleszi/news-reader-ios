@@ -23,6 +23,7 @@
 		B48B10002817D5DA0084481D /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B0FFF2817D5DA0084481D /* APIServiceProtocol.swift */; };
 		B48B10022817D6230084481D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B10012817D6230084481D /* APIService.swift */; };
 		B48B10042817D9660084481D /* ArticleFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B10032817D9660084481D /* ArticleFetcher.swift */; };
+		B4E80A8D2818139F00EB4C35 /* ArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E80A8C2818139F00EB4C35 /* ArticleContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B48B0FFF2817D5DA0084481D /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		B48B10012817D6230084481D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B48B10032817D9660084481D /* ArticleFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFetcher.swift; sourceTree = "<group>"; };
+		B4E80A8C2818139F00EB4C35 /* ArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				B43D85AC2817FEFB00EBB8CE /* ArticleListView.swift */,
 				B43D85AE2817FF0A00EBB8CE /* ArticleListItemView.swift */,
+				B4E80A8C2818139F00EB4C35 /* ArticleContentView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B48B0FFA2817D2C20084481D /* Article.swift in Sources */,
+				B4E80A8D2818139F00EB4C35 /* ArticleContentView.swift in Sources */,
 				B43D85AD2817FEFB00EBB8CE /* ArticleListView.swift in Sources */,
 				B48B10002817D5DA0084481D /* APIServiceProtocol.swift in Sources */,
 				B48B10042817D9660084481D /* ArticleFetcher.swift in Sources */,
