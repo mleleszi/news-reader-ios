@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var articleFetcher = ArticleFetcher()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            if articleFetcher.isLoading {
+                Text("loading")
+            } else if articleFetcher.errorMessage != nil {
+                Text("error")
+            } else {
+                List {
+                    ForEach(articleFetcher.articles) { article in
+                        Text(article.title ?? " no title ")
+                    }
+                }
+            }
+        }
     }
 }
 
