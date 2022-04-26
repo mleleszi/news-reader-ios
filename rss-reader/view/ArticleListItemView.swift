@@ -10,6 +10,7 @@ import SwiftUI
 struct ArticleListItemView: View {
     let article: Article
     let imageSize: CGFloat = 100
+    
 
     var body: some View {
         HStack {

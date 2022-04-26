@@ -16,7 +16,7 @@ struct ArticleListView: View {
             List {
                 ForEach(articles) { article in
                     NavigationLink {
-                        ArticleContentView()
+                        ArticleContentView(article: article)
                     } label: {
                         ArticleListItemView(article: article)
                     }
@@ -34,3 +34,4 @@ struct ArticleListView_Previews: PreviewProvider {
         ArticleListView(articles: [Article.returnExampleArticle(), Article.returnExampleArticle()])
     }
 }
+ 

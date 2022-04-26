@@ -8,13 +8,42 @@
 import SwiftUI
 
 struct ArticleContentView: View {
+    let article: Article
+    let imageSize: CGFloat = 300
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                if article.urlToImage != nil {
+                    AsyncImage(url: URL(string: article.urlToImage!)) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: imageSize, height: imageSize)
+                                .clipped()
+
+                        } else if phase.error != nil {
+                            Text(phase.error?.localizedDescription ?? "error")
+                                .foregroundColor(Color.pink)
+                                .frame(width: imageSize, height: imageSize)
+                        } else {
+                            ProgressView()
+                                .frame(width: imageSize, height: imageSize)
+                        }
+                    }
+                } else {
+                    Color.gray.frame(width: imageSize, height: imageSize)
+                }
+                
+                Text(article.content ?? "No content")
+            }
+        }
     }
 }
 
 struct ArticleContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleContentView()
+        ArticleContentView(article: Article.returnExampleArticle())
     }
 }
