@@ -36,7 +36,22 @@ struct ArticleContentView: View {
                     Color.gray.frame(width: imageSize, height: imageSize)
                 }
                 
-                Text(article.content ?? "No content")
+                VStack(alignment: .leading, spacing: 15) {
+                    Text(article.title)
+                        .font(.headline)
+                    
+                    HStack (){
+                        Text("\(article.author ?? "No author")," )
+                        Text(article.publishedAt, style: .date)
+                    }
+                    .font(.footnote)
+                    
+                    Text(article.content ?? "No content")
+                    Link("Read the full article", destination: URL(string: article.url)!)
+                   
+                    Spacer()
+                }.padding()
+                
             }
         }
     }

@@ -13,9 +13,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if articleFetcher.isLoading {
-                Text("loading")
+                LoadingView()
             } else if articleFetcher.errorMessage != nil {
-                Text("error")
+                ErrorView(articleFetcher: articleFetcher)
             } else {
                 ArticleListView(articles: articleFetcher.articles)
             }
