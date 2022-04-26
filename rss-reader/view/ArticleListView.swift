@@ -10,11 +10,22 @@ import SwiftUI
 struct ArticleListView: View {
     let articles: [Article]
     
+    @State private var searchText: String = ""
+    
+    var filteredArticles: [Article] {
+        if searchText.count == 0 {
+            return articles
+        } else  {
+            return articles.filter { $0.title.lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
+    
     var body: some View {
         // TODO: make it refreshable
         NavigationView {
             List {
-                ForEach(articles) { article in
+                ForEach(filteredArticles) { article in
                     NavigationLink {
                         ArticleContentView(article: article)
                     } label: {
@@ -24,8 +35,8 @@ struct ArticleListView: View {
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Articles")
+            .searchable(text: $searchText)
         }
-         
     }
 }
 

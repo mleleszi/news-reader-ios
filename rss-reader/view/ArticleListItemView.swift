@@ -37,7 +37,7 @@ struct ArticleListItemView: View {
             }
 
             VStack(alignment: .leading, spacing: 5) {
-                Text(article.title ?? "No title")
+                Text(article.title)
                     .font(.headline)
                  // Text(article.publishedAt, style: .date)
                 Text(article.source.name)

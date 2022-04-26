@@ -11,7 +11,7 @@ struct Article: Decodable, Identifiable {
     let id: UUID
     let source: Source
     let author: String?
-    let title: String?
+    let title: String
     let description: String?
     let url: String?
     let urlToImage: String?
@@ -28,7 +28,7 @@ struct Article: Decodable, Identifiable {
         id = UUID()
         source = try values.decode(Source.self, forKey: .source)
         author = try values.decodeIfPresent(String.self, forKey: .author)
-        title = try values.decodeIfPresent(String.self, forKey: .title)
+        title = try values.decode(String.self, forKey: .title)
         description = try values.decodeIfPresent(String.self, forKey: .description)
         url = try values.decodeIfPresent(String.self, forKey: .url)
         urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
@@ -39,7 +39,7 @@ struct Article: Decodable, Identifiable {
         content = try values.decodeIfPresent(String.self, forKey: .content)
     }
     
-    init(source: Source, author: String, title: String?, description: String?, url: String?, urlToImage: String?, publishedAt: String, content: String?) {
+    init(source: Source, author: String, title: String, description: String?, url: String?, urlToImage: String?, publishedAt: String, content: String?) {
         id = UUID()
         self.source = source
         self.author = author
