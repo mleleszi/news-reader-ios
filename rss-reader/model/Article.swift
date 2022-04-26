@@ -27,13 +27,13 @@ struct Article: Decodable, Identifiable {
         
         id = UUID()
         source = try values.decode(Source.self, forKey: .source)
-        author = try values.decode(String.self, forKey: .author)
-        title = try values.decode(String.self, forKey: .title)
-        description = try values.decode(String.self, forKey: .description)
-        url = try values.decode(String.self, forKey: .url)
-        urlToImage = try values.decode(String.self, forKey: .urlToImage)
-        publishedAt = try values.decode(String.self, forKey: .publishedAt)
-        content = try values.decode(String.self, forKey: .content)
+        author = try values.decodeIfPresent(String.self, forKey: .author)
+        title = try values.decodeIfPresent(String.self, forKey: .title)
+        description = try values.decodeIfPresent(String.self, forKey: .description)
+        url = try values.decodeIfPresent(String.self, forKey: .url)
+        urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
+        publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
+        content = try values.decodeIfPresent(String.self, forKey: .content)
     }
     
     init(source: Source, author: String, title: String?, description: String?, url: String?, urlToImage: String?, publishedAt: String?, content: String?) {

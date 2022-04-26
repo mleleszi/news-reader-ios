@@ -17,11 +17,7 @@ struct ContentView: View {
             } else if articleFetcher.errorMessage != nil {
                 Text("error")
             } else {
-                List {
-                    ForEach(articleFetcher.articles) { article in
-                        Text(article.title ?? " no title ")
-                    }
-                }
+                ArticleListView(articles: articleFetcher.articles)
             }
         }
     }

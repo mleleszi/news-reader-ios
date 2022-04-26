@@ -17,7 +17,7 @@ struct Source: Decodable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(String.self, forKey: .id)
+        id = try values.decodeIfPresent(String.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
     }
     
