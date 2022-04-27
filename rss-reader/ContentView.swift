@@ -12,12 +12,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            if articleViewModel.isLoading {
-                LoadingView()
-            } else if articleViewModel.errorMessage != nil {
+            if articleViewModel.errorMessage != nil {
                 ErrorView(articleViewModel: articleViewModel)
             } else {
-                ArticleListView(articles: articleViewModel.articles)
+                ArticleListView(articles: articleViewModel.articles, articleViewModel: articleViewModel)
             }
         }
     }
