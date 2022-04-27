@@ -8,19 +8,9 @@
 import SwiftUI
 
 struct ArticleListView: View {
-    let articles: [Article]
+    var articles: [Article]
     @ObservedObject var articleViewModel: ArticleViewModel
-
-    @State private var searchText: String = ""
-
-    var filteredArticles: [Article] {
-        if searchText.count == 0 {
-            return articles
-        } else {
-            return articles.filter { $0.title.lowercased().contains(searchText.lowercased())
-            }
-        }
-    }
+    @State private var searchText: String = "apple"
 
     var body: some View {
         NavigationView {
@@ -34,7 +24,7 @@ struct ArticleListView: View {
                     }
                     .onAppear {
                         if index == articles.count - 2 {
-                            articleViewModel.fetchMoreArticles()
+                            articleViewModel.fetchMoreArticles(searchFor: searchText)
                         }
                     }
                 }
@@ -42,12 +32,18 @@ struct ArticleListView: View {
             .listStyle(PlainListStyle())
             .navigationTitle("Articles")
             .searchable(text: $searchText)
+            .onSubmit (of: .search) {
+                articleViewModel.articles.removeAll()
+                articleViewModel.fetchAllArticles(page: 1, searchFor: searchText)
+            }
         }
     }
 }
+
 
 struct ArticleListView_Previews: PreviewProvider {
     static var previews: some View {
         ArticleListView(articles: [Article.returnExampleArticle(), Article.returnExampleArticle()], articleViewModel: ArticleViewModel())
     }
 }
+ 

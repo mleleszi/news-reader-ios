@@ -15,7 +15,7 @@ struct ErrorView: View {
             Text(articleViewModel.errorMessage ?? "Something went wrong")
 
             Button {
-                articleViewModel.fetchAllArticles(page: 1)
+                articleViewModel.fetchAllArticles(page: 1, searchFor: "apple")
             } label: {
                 Text("Try again")
             }
