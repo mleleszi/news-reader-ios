@@ -19,8 +19,8 @@ struct ArticleContentView: View {
                         if let image = phase.image {
                             image
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width: imageSize, height: imageSize)
+                                .scaledToFit()
+                                .frame(height: imageSize)
                                 .clipped()
 
                         } else if phase.error != nil {
@@ -33,7 +33,7 @@ struct ArticleContentView: View {
                         }
                     }
                 } else {
-                    Color.gray.frame(width: imageSize, height: imageSize)
+                    Color.gray.frame(height: imageSize)
                 }
                 
                 VStack(alignment: .leading, spacing: 15) {
@@ -51,7 +51,6 @@ struct ArticleContentView: View {
                    
                     Spacer()
                 }.padding()
-                
             }
         }
     }
