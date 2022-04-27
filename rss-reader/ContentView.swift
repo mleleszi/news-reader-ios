@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var articleFetcher = ArticleFetcher()
+    @StateObject var articleViewModel = ArticleViewModel()
 
     var body: some View {
         VStack {
-            if articleFetcher.isLoading {
+            if articleViewModel.isLoading {
                 LoadingView()
-            } else if articleFetcher.errorMessage != nil {
-                ErrorView(articleFetcher: articleFetcher)
+            } else if articleViewModel.errorMessage != nil {
+                ErrorView(articleViewModel: articleViewModel)
             } else {
-                ArticleListView(articles: articleFetcher.articles)
+                ArticleListView(articles: articleViewModel.articles)
             }
         }
     }

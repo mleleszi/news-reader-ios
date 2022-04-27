@@ -24,7 +24,7 @@ struct APIService: APIServiceProtocol {
             } else if let data = data {
                 let decoder = JSONDecoder()
                 do {
-                    let res = try decoder.decode(APIRespone.self, from: data)
+                    let res = try decoder.decode(APIResponse.self, from: data)
                     completion(Result.success(res.articles))
                 } catch {
                     print(error)

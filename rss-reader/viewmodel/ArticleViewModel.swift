@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticleFetcher: ObservableObject {
+class ArticleViewModel: ObservableObject {
     @Published var articles = [Article]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil

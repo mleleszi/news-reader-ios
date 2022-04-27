@@ -19,7 +19,7 @@ enum APIError: Error, CustomStringConvertible {
         case .badURL, .parsing, .unknown:
             return "Sorry, something went wrong."
         case .badResponse(_):
-            return "Sorry, the connection to our server failed."
+            return "Sorry, the connection to the server failed."
         case .url(let error):
             return error?.localizedDescription ?? "Something went wrong."
         }

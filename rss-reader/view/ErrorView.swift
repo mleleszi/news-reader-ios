@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ErrorView: View {
-    @ObservedObject var articleFetcher: ArticleFetcher
+    @ObservedObject var articleViewModel: ArticleViewModel
 
     var body: some View {
         VStack {
-            Text(articleFetcher.errorMessage ?? "Something went wrong")
+            Text(articleViewModel.errorMessage ?? "Something went wrong")
 
             Button {
-                articleFetcher.fetchAllArticles()
+                articleViewModel.fetchAllArticles()
             } label: {
                 Text("Try again")
             }
@@ -25,6 +25,6 @@ struct ErrorView: View {
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(articleFetcher: ArticleFetcher())
+        ErrorView(articleViewModel: ArticleViewModel())
     }
 }

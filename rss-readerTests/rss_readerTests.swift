@@ -16,11 +16,11 @@ class rss_readerTests: XCTestCase {
     func test_fetching_articles_success() {
         // GIVEN
         let result = Result<[Article], APIError>.success([Article.returnExampleArticle(), Article.returnExampleArticle()])
-        let fetcher = ArticleFetcher(service: MockAPIService(result: result))
+        let articleViewModel = ArticleViewModel(service: MockAPIService(result: result))
         let promise = expectation(description: "fetch data")
         
         // WHEN
-        fetcher.$articles.sink { articles in
+        articleViewModel.$articles.sink { articles in
             if articles.count == 2 {
                 promise.fulfill()
             }
@@ -33,17 +33,17 @@ class rss_readerTests: XCTestCase {
     func test_fetching_articles_error() {
         // GIVEN
         let result = Result<[Article], APIError>.failure(APIError.badURL)
-        let fetcher = ArticleFetcher(service: MockAPIService(result: result))
+        let articleViewModel = ArticleViewModel(service: MockAPIService(result: result))
         let promise = expectation(description: "show error message")
         
         // WHEN
-        fetcher.$articles.sink { articles in
+        articleViewModel.$articles.sink { articles in
             if !articles.isEmpty {
                 XCTFail()
             }
         }.store(in: &subscriptions)
         
-        fetcher.$errorMessage.sink { errorMessage in
+        articleViewModel.$errorMessage.sink { errorMessage in
             if errorMessage != nil {
                 promise.fulfill()
             }
